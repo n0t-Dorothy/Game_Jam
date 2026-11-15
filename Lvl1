@@ -1,0 +1,16 @@
+extends Area2D
+
+@export_file("*.tscn") var next_level: String = "res://scenes/lvl1.tscn"
+
+func _ready() -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") and next_level != "":
+		call_deferred("_go_to_lvl2")
+	if body.is_in_group("Player") and next_level != "":
+		call_deferred("_go_to_lvl1")
+
+func _go_to_lvl2() -> void:
+	get_tree().reload_current_scene()
+		
